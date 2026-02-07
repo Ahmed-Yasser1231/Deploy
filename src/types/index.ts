@@ -26,6 +26,28 @@ export interface User {
   createdAt: string;
 }
 
+// Profile Types
+export interface EntrepreneurProfile extends User {
+  role: 'entrepreneur';
+  projects: Project[];
+  investments: Investment[];
+}
+
+export interface InvestorProfile extends User {
+  role: 'investor';
+  investmentRange: {
+    min: number;
+    max: number;
+  };
+  preferredIndustries: Industry[];
+  riskTolerance: RiskLevel;
+  preferredStages: ProjectStage[];
+  portfolio: Investment[];
+  subscriptionTier: SubscriptionTier;
+  projects: Project[];
+  investments: Investment[];
+}
+
 // Project Types
 export type ProjectStatus = 'draft' | 'pending' | 'approved' | 'rejected' | 'funded';
 export type ProjectStage = 'idea' | 'mvp' | 'early-stage' | 'growth' | 'expansion';

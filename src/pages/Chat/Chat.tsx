@@ -7,7 +7,6 @@ import {
   Phone, 
   Video,
   Image,
-  File,
   Smile
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';

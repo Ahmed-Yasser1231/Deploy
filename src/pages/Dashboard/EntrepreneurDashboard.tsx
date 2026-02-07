@@ -3,23 +3,19 @@ import { Link } from 'react-router-dom';
 import { 
   FolderKanban, 
   DollarSign, 
-  TrendingUp, 
-  Users,
   Eye,
   MessageSquare,
   ArrowRight,
   Plus
 } from 'lucide-react';
 import { 
-  LineChart, 
-  Line, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
   ResponsiveContainer,
   AreaChart,
-  Area
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip
 } from 'recharts';
 import { useAuth } from '../../context/AuthContext';
 import StatsCard from '../../components/StatsCard/StatsCard';
@@ -110,7 +106,10 @@ const EntrepreneurDashboard: React.FC = () => {
                   <XAxis dataKey="month" stroke="#6b7280" fontSize={12} />
                   <YAxis stroke="#6b7280" fontSize={12} tickFormatter={(v) => `$${v/1000}k`} />
                   <Tooltip 
-                    formatter={(value: number) => [formatCurrency(value), 'Revenue']}
+                    formatter={(value: number | undefined) => {
+                      if (value === undefined) return ['', 'Revenue'];
+                      return [formatCurrency(value), 'Revenue'];
+                    }}
                     contentStyle={{ 
                       background: 'white', 
                       border: '1px solid #e5e7eb',

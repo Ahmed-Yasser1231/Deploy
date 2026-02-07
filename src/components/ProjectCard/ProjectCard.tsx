@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { TrendingUp, Users, DollarSign, AlertTriangle, ArrowRight } from 'lucide-react';
+import { TrendingUp, Users, DollarSign, ArrowRight } from 'lucide-react';
 import type { Project } from '../../types';
 import { formatCurrency, getIndustryLabel, getRiskLevelColor } from '../../data/mockData';
 import './ProjectCard.css';

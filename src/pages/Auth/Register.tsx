@@ -40,7 +40,8 @@ const Register: React.FC = () => {
     try {
       // Simulate registration
       await new Promise(resolve => setTimeout(resolve, 1000));
-      await login(formData.email, formData.password, 'user');
+      const role = formData.roles.includes('investor') ? 'investor' : 'entrepreneur';
+      await login(formData.email, formData.password, role);
       navigate('/dashboard');
     } catch (err) {
       setError('Registration failed. Please try again.');

@@ -5,7 +5,6 @@ import {
   DollarSign, 
   TrendingUp, 
   Heart,
-  PieChart,
   ArrowRight,
   Star,
   AlertTriangle,
@@ -26,7 +25,6 @@ import {
 } from 'recharts';
 import { useAuth } from '../../context/AuthContext';
 import StatsCard from '../../components/StatsCard/StatsCard';
-import ProjectCard from '../../components/ProjectCard/ProjectCard';
 import { mockProjects, formatCurrency, mockMatchRecommendations, getIndustryLabel } from '../../data/mockData';
 import './Dashboard.css';
 
@@ -107,10 +105,13 @@ const InvestorDashboard: React.FC = () => {
                   <XAxis dataKey="month" stroke="#6b7280" fontSize={12} />
                   <YAxis stroke="#6b7280" fontSize={12} tickFormatter={(v) => `$${v/1000}k`} />
                   <Tooltip 
-                    formatter={(value: number, name: string) => [
-                      formatCurrency(value), 
-                      name === 'invested' ? 'Invested' : 'Returns'
-                    ]}
+                    formatter={(value: number | undefined, name: string | undefined) => {
+                      if (value === undefined || name === undefined) return ['', name || ''];
+                      return [
+                        formatCurrency(value), 
+                        name === 'invested' ? 'Invested' : 'Returns'
+                      ];
+                    }}
                     contentStyle={{ 
                       background: 'white', 
                       border: '1px solid #e5e7eb',

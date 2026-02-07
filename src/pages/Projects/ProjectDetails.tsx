@@ -3,8 +3,6 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { 
   ArrowLeft,
   TrendingUp, 
-  Users, 
-  DollarSign, 
   Calendar,
   MapPin,
   Building,
@@ -38,7 +36,7 @@ import './Projects.css';
 const ProjectDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user: _user } = useAuth();
   const [activeTab, setActiveTab] = useState<'overview' | 'financials' | 'documents' | 'team'>('overview');
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -308,10 +306,10 @@ const ProjectDetails: React.FC = () => {
                     <XAxis dataKey="month" stroke="#6b7280" fontSize={12} />
                     <YAxis stroke="#6b7280" fontSize={12} tickFormatter={(v) => `$${v/1000}k`} />
                     <Tooltip 
-                      formatter={(value: number, name: string) => [
-                        formatCurrency(value), 
-                        name.charAt(0).toUpperCase() + name.slice(1)
-                      ]}
+                      formatter={(value: number | undefined, name: string | undefined) => {
+                        if (value === undefined || name === undefined) return ['', name || ''];
+                        return [formatCurrency(value), name.charAt(0).toUpperCase() + name.slice(1)];
+                      }}
                       contentStyle={{ 
                         background: 'white', 
                         border: '1px solid #e5e7eb',
@@ -339,7 +337,10 @@ const ProjectDetails: React.FC = () => {
                     <XAxis dataKey="month" stroke="#6b7280" fontSize={12} />
                     <YAxis stroke="#6b7280" fontSize={12} tickFormatter={(v) => `$${v/1000}k`} />
                     <Tooltip 
-                      formatter={(value: number) => [formatCurrency(value), 'Profit']}
+                      formatter={(value: number | undefined) => {
+                        if (value === undefined) return ['', 'Profit'];
+                        return [formatCurrency(value), 'Profit'];
+                      }}
                       contentStyle={{ 
                         background: 'white', 
                         border: '1px solid #e5e7eb',
@@ -365,7 +366,10 @@ const ProjectDetails: React.FC = () => {
                     <XAxis dataKey="month" stroke="#6b7280" fontSize={12} />
                     <YAxis stroke="#6b7280" fontSize={12} tickFormatter={(v) => `$${v/1000}k`} />
                     <Tooltip 
-                      formatter={(value: number) => [formatCurrency(value), 'Revenue']}
+                      formatter={(value: number | undefined) => {
+                        if (value === undefined) return ['', 'Revenue'];
+                        return [formatCurrency(value), 'Revenue'];
+                      }}
                       contentStyle={{ 
                         background: 'white', 
                         border: '1px solid #e5e7eb',

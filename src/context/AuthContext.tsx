@@ -1,11 +1,11 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, type ReactNode } from 'react';
 import type { User, EntrepreneurProfile, InvestorProfile, Notification } from '../types';
 import { mockEntrepreneur, mockInvestor, mockNotifications } from '../data/mockData';
 
 interface AuthContextType {
   user: User | EntrepreneurProfile | InvestorProfile | null;
   isAuthenticated: boolean;
-  login: (email: string, password: string, role: 'entrepreneur' | 'investor') => Promise<void>;
+  login: (_email: string, _password: string, role: 'entrepreneur' | 'investor') => Promise<void>;
   logout: () => void;
   notifications: Notification[];
   unreadNotifications: number;
@@ -18,7 +18,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [user, setUser] = useState<User | EntrepreneurProfile | InvestorProfile | null>(null);
   const [notifications, setNotifications] = useState<Notification[]>(mockNotifications);
 
-  const login = async (email: string, password: string, role: 'entrepreneur' | 'investor') => {
+  const login = async (_email: string, _password: string, role: 'entrepreneur' | 'investor') => {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 500));
     

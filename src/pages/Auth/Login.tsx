@@ -20,10 +20,10 @@ const Login: React.FC = () => {
     setError('');
 
     try {
-      await login(email, password, 'user');
-      navigate('/dashboard');
+      await login(email, password, 'investor');
+      navigate('/explore');
     } catch (err) {
-      setError('Invalid credentials. Please try again.');
+      setError('Invalid credentials');
     } finally {
       setLoading(false);
     }

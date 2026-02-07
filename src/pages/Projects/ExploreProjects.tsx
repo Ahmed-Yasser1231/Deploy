@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Search, Filter, Grid, List, ChevronDown } from 'lucide-react';
+import { Search, Filter, ChevronDown, Grid, List } from 'lucide-react';
 import ProjectCard from '../../components/ProjectCard/ProjectCard';
+import { useAuth } from '../../context/AuthContext';
 import { mockProjects, getIndustryLabel } from '../../data/mockData';
 import type { Industry, ProjectStage, RiskLevel } from '../../types';
 import './Projects.css';
-import { useAuth } from '../../context/AuthContext';
 
 const ExploreProjects: React.FC = () => {
   const { user } = useAuth();
@@ -35,12 +34,12 @@ const ExploreProjects: React.FC = () => {
     return matchesSearch && matchesIndustry && matchesStage && matchesRisk && matchesFunding;
   });
 
-  const toggleFilter = (type: 'industries' | 'stages' | 'riskLevels', value: any) => {
+  const toggleFilter = (type: keyof typeof filters, value: string) => {
     setFilters(prev => ({
       ...prev,
-      [type]: prev[type].includes(value)
-        ? prev[type].filter(v => v !== value)
-        : [...prev[type], value]
+      [type]: (prev[type] as string[]).includes(value)
+        ? (prev[type] as string[]).filter((v: string) => v !== value)
+        : [...(prev[type] as string[]), value]
     }));
   };
 

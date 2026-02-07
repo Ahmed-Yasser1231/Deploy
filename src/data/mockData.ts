@@ -21,6 +21,7 @@ export const mockEntrepreneur: EntrepreneurProfile = {
   experience: 'Founded 3 successful startups in MENA region',
   linkedIn: 'https://linkedin.com/in/ahmedhassan',
   projects: [],
+  investments: [],
   createdAt: '2024-01-15T10:00:00Z'
 };
 
@@ -38,6 +39,8 @@ export const mockInvestor: InvestorProfile = {
   preferredStages: ['mvp', 'early-stage'],
   portfolio: [],
   subscriptionTier: 'professional',
+  projects: [],
+  investments: [],
   createdAt: '2023-11-20T10:00:00Z'
 };
 
@@ -45,7 +48,7 @@ export const mockInvestor: InvestorProfile = {
 export const mockProjects: Project[] = [
   {
     id: 'p1',
-    entrepreneurId: 'e1',
+    userId: 'e1',
     name: 'EcoTrack',
     description: 'AI-powered sustainability tracking platform for businesses. Monitor carbon footprint, optimize resources, and achieve ESG compliance with real-time analytics and actionable insights.',
     industry: 'technology',
@@ -99,7 +102,7 @@ export const mockProjects: Project[] = [
   },
   {
     id: 'p2',
-    entrepreneurId: 'e2',
+    userId: 'e2',
     name: 'HealthLink',
     description: 'Telemedicine platform connecting patients with specialists across Egypt. Features include video consultations, e-prescriptions, and health record management.',
     industry: 'healthcare',
@@ -150,7 +153,7 @@ export const mockProjects: Project[] = [
   },
   {
     id: 'p3',
-    entrepreneurId: 'e3',
+    userId: 'e3',
     name: 'PayFlow',
     description: 'Digital payment infrastructure for SMEs in emerging markets. Simplify payments, invoicing, and financial operations with one integrated platform.',
     industry: 'fintech',
@@ -201,7 +204,7 @@ export const mockProjects: Project[] = [
   },
   {
     id: 'p4',
-    entrepreneurId: 'e4',
+    userId: 'e4',
     name: 'AgriSmart',
     description: 'IoT-based precision agriculture platform. Smart sensors, drone monitoring, and AI analytics to optimize crop yields and reduce water consumption.',
     industry: 'agriculture',
@@ -251,7 +254,7 @@ export const mockProjects: Project[] = [
   },
   {
     id: 'p5',
-    entrepreneurId: 'e5',
+    userId: 'e5',
     name: 'EduTech Pro',
     description: 'Adaptive learning platform using AI to personalize education. Features include intelligent tutoring, progress tracking, and curriculum optimization.',
     industry: 'education',
