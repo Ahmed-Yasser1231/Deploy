@@ -23,7 +23,7 @@ const MyProfile: React.FC = () => {
             )}
           </div>
           <div className="profile-header-info">
-            <h1 style={{ marginTop: '20px' }}>{fullName}</h1>
+            <h1 style={{ marginTop: '55px' }}>{fullName}</h1>
             <p style={{ color: 'black' , marginTop: '10px'}} className="profile-headline">{headline}</p>
             <div className="profile-meta">
               <span style={{ color: 'black' }}><MapPin size={14} /> Egypt</span>
