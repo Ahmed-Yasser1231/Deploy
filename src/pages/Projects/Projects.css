@@ -268,23 +268,24 @@
 
 .project-header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 24px;
   margin-bottom: 32px;
 }
 
-.header-left {
+.header-top {
   display: flex;
   gap: 24px;
-  flex: 1;
+  align-items: flex-start;
 }
 
 .project-thumbnail {
-  width: 200px;
-  height: 150px;
+  width: 180px;
+  height: 180px;
   border-radius: 16px;
   overflow: hidden;
   flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .project-thumbnail img {
@@ -307,12 +308,23 @@
 
 .header-info {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.header-info h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
 }
 
 .tags {
   display: flex;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 0;
 }
 
 .industry-tag,
@@ -338,37 +350,47 @@
   text-transform: capitalize;
 }
 
-.header-info h1 {
-  margin: 0 0 8px 0;
-  font-size: 28px;
-  font-weight: 700;
-  color: #111827;
+.project-tagline {
+  margin: 0;
+  font-size: 16px;
+  color: #6b7280;
+  line-height: 1.6;
+  max-width: 800px;
 }
 
-.project-tagline {
-  margin: 0 0 16px 0;
-  font-size: 15px;
-  color: #6b7280;
-  line-height: 1.5;
+.header-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
 }
 
 .meta-info {
   display: flex;
-  gap: 20px;
+  gap: 24px;
+  flex-wrap: wrap;
 }
 
 .meta-info span {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 13px;
+  gap: 8px;
+  font-size: 14px;
   color: #6b7280;
+  font-weight: 500;
+}
+
+.meta-info span svg {
+  color: #9ca3af;
 }
 
 .header-actions {
   display: flex;
   gap: 12px;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .favorite-btn,
@@ -389,6 +411,7 @@
 .favorite-btn:hover,
 .share-btn:hover {
   background: #f3f4f6;
+  border-color: #d1d5db;
 }
 
 .favorite-btn.active {
@@ -401,19 +424,23 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 10px;
+  padding: 12px 24px;
   background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
   color: white;
   border: none;
   border-radius: 12px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  transition: all 0.2s;
 }
 
 .contact-btn:hover {
-  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
 }
 
 /* Funding Overview */
@@ -1421,5 +1448,42 @@
 
   .review-grid {
     grid-template-columns: 1fr;
+  }
+
+  .header-top {
+    flex-direction: column;
+  }
+
+  .project-thumbnail {
+    width: 100%;
+    height: 200px;
+  }
+
+  .header-info h1 {
+    font-size: 24px;
+  }
+
+  .project-tagline {
+    font-size: 14px;
+  }
+
+  .header-bottom {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .meta-info {
+    gap: 16px;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .contact-btn {
+    flex: 1;
+    justify-content: center;
   }
 }

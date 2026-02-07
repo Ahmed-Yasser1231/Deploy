@@ -73,7 +73,7 @@ const ProjectDetails: React.FC = () => {
       </button>
 
       <div className="project-header">
-        <div className="header-left">
+        <div className="header-top">
           <div className="project-thumbnail">
             {project.thumbnail ? (
               <img src={project.thumbnail} alt={project.name} />
@@ -82,6 +82,7 @@ const ProjectDetails: React.FC = () => {
             )}
           </div>
           <div className="header-info">
+            <h1>{project.name}</h1>
             <div className="tags">
               <span className="industry-tag">{getIndustryLabel(project.industry)}</span>
               <span className="stage-tag">{project.stage.replace('-', ' ')}</span>
@@ -94,29 +95,32 @@ const ProjectDetails: React.FC = () => {
                 {project.riskLevel} risk
               </span>
             </div>
-            <h1>{project.name}</h1>
             <p className="project-tagline">{project.description}</p>
-            <div className="meta-info">
-              <span><Calendar size={16} /> Founded {formatDate(project.createdAt)}</span>
-              <span><MapPin size={16} /> Egypt</span>
-              <span><Building size={16} /> {project.founders.length} Founder{project.founders.length > 1 ? 's' : ''}</span>
-            </div>
           </div>
         </div>
-        <div className="header-actions">
-          <button 
-            className={`favorite-btn ${isFavorite ? 'active' : ''}`}
-            onClick={() => setIsFavorite(!isFavorite)}
-          >
-            <Heart size={20} fill={isFavorite ? '#ef4444' : 'none'} />
-          </button>
-          <button className="share-btn">
-            <Share2 size={20} />
-          </button>
-          <Link to={`/messages?project=${project.id}`} className="contact-btn">
-            <MessageSquare size={20} />
-            Contact Founder
-          </Link>
+        
+        <div className="header-bottom">
+          <div className="meta-info">
+            <span><Calendar size={16} /> Founded {formatDate(project.createdAt)}</span>
+            <span><MapPin size={16} /> Egypt</span>
+            <span><Building size={16} /> {project.founders.length} Founder{project.founders.length > 1 ? 's' : ''}</span>
+          </div>
+          <div className="header-actions">
+            <button 
+              className={`favorite-btn ${isFavorite ? 'active' : ''}`}
+              onClick={() => setIsFavorite(!isFavorite)}
+              title={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+            >
+              <Heart size={20} fill={isFavorite ? '#ef4444' : 'none'} />
+            </button>
+            <button className="share-btn" title="Share project">
+              <Share2 size={20} />
+            </button>
+            <Link to={`/messages?project=${project.id}`} className="contact-btn">
+              <MessageSquare size={20} />
+              Contact Founder
+            </Link>
+          </div>
         </div>
       </div>
 
